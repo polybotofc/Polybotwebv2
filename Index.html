@@ -107,29 +107,16 @@ body {
 </body>
 </html>
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Website Visitor Counter</title>
-</head>
-<body>
-    <h1>Visitor</h1>
-    <p id="visitorCount">Memuat...</p>
+<center>
+<div>Jumlah kunjungan website:</div>
+<div class="website-counter"></div>
+<button class="button" id="reset">Reset</button>
+</center>
+<script src="Js.js"></script>
 
-    <script>
-        // Simulasikan penghitungan pengunjung dengan localStorage
-        if (localStorage.getItem("visitorCount")) {
-            var visitorCount = parseInt(localStorage.getItem("visitorCount"));
-            visitorCount += 1;
-        } else {
-            var visitorCount = 1;
-        }
+<script src="Css.css"></script>
 
-        localStorage.setItem("visitorCount", visitorCount);
 
-        document.getElementById("visitorCount").innerHTML = "you are a visitor to-" + visitorCount;
-    </script>
-</body>
-</html>
 <!DOCTYPE html>
 <html>
 <head>
