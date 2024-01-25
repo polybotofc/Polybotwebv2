@@ -1,30 +1,44 @@
-/* Center child elements */
-.website-counter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+/* Gaya umum untuk semua layar */
+#container {
+  width: 90%;
+  margin: 0 auto;
 }
 
-/* Styles for website counter container */
-.website-counter {
-  background-color: #ff4957;
+#header {
+  height: 100px;
+  background-color: blue;
+}
+
+#nav {
   height: 50px;
-  width: 80px;
-  color: white;
-  border-radius: 30px;
-  font-weight: 700;
-  font-size: 25px;
-  margin-top: 10px;
+  background-color: green;
 }
 
-/* Styles for reset button */
-#reset {
-  margin-top: 20px;
-  background-color: #008cba;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 8px 20px;
-  color: white;
-  border: 0;
+#content {
+  height: 500px;
+  background-color: yellow;
+}
+
+#footer {
+  height: 50px;
+  background-color: red;
+}
+
+/* Gaya khusus untuk layar kecil (max-width: 600px) */
+@media screen and (max-width: 600px) {
+  #header {
+    height: 80px;
+  }
+
+  #nav {
+    height: 40px;
+  }
+
+  #content {
+    height: 400px;
+  }
+
+  #footer {
+    height: 40px;
+  }
 }
