@@ -192,7 +192,8 @@
 
   <header class="site-header">
     <div class="wrap">
-      <span class="logo"><span class="dot"></span>Polybot</span>
+      <!-- psst -->
+      <span class="logo"><span class="dot" id="secret-dot"></span>Polybot</span>
     </div>
   </header>
 
@@ -263,6 +264,24 @@
 
     setTimeout(tampilkanNotif, 1500);
     jadwalkanNotif();
+
+    // teka-teki tersembunyi: klik titik merah di logo 5x cepat
+    var dot = document.getElementById('secret-dot');
+    var jumlahKlik = 0;
+    var waktuKlikTerakhir = 0;
+
+    dot.addEventListener('click', function () {
+      var sekarang = Date.now();
+      if (sekarang - waktuKlikTerakhir > 1500) {
+        jumlahKlik = 0;
+      }
+      waktuKlikTerakhir = sekarang;
+      jumlahKlik++;
+
+      if (jumlahKlik >= 5) {
+        window.location.href = 'easter.html';
+      }
+    });
   </script>
 
 </body>
