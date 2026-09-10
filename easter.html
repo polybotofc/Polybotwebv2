@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polybot | ???</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+
+  body {
+    background: #000;
+    color: #f2f2f7;
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 24px;
+  }
+
+  /* STARFIELD */
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #f2f2f7;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.9; }
+  }
+
+  /* CONTENT */
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #111114;
+    border: 1px solid #1c1d22;
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #8aa3ff;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin: 0 0 28px;
+  }
+
+  .terminal {
+    background: #0a0a0c;
+    border: 1px solid #1c1d22;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #c7c7cf;
+    min-height: 168px;
+  }
+
+  .terminal .line {
+    opacity: 0;
+    white-space: pre-wrap;
+    margin: 0 0 6px;
+  }
+
+  .terminal .prompt {
+    color: #5eead4;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 7px;
+    height: 14px;
+    background: #f2f2f7;
+    vertical-align: middle;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .visitor {
+    margin-top: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #9a9aa2;
+  }
+
+  .visitor .n {
+    color: #8aa3ff;
+    font-weight: 500;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 14px;
+    color: #9a9aa2;
+    text-decoration: none;
+  }
+
+  .back-link:hover { color: #f2f2f7; }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 22px; }
+    .terminal { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="content">
+    <span class="tag">easter egg ditemukan</span>
+    <h1>Selamat, kamu nemu halaman rahasianya.</h1>
+
+    <div class="terminal" id="terminal"></div>
+
+    <div class="visitor">kamu orang ke-<span class="n" id="visitor-n">...</span> yang nemu halaman ini</div>
+    <a href="index.html" class="back-link">← balik ke situs yang udah tutup</a>
+  </div>
+
+  <script>
+    // starfield
+    var starsWrap = document.getElementById('stars');
+    for (var i = 0; i < 60; i++) {
+      var s = document.createElement('span');
+      s.className = 'star';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.animationDelay = (Math.random() * 3) + 's';
+      starsWrap.appendChild(s);
+    }
+
+    // typewriter terminal
+    var lines = [
+      'halo, atau assalamualaikum kalau kamu muslim.',
+      'ini pesan terakhir dari developer Polybot.',
+      'project ini dibuat sendirian — banyak begadang, banyak error, tapi seru.',
+      'makasih buat siapa pun yang pernah pake, ngobrol, atau sekadar mampir.',
+      'sampai ketemu lagi di project berikutnya. wkwk.'
+    ];
+
+    var term = document.getElementById('terminal');
+
+    function ketikBaris(index) {
+      if (index >= lines.length) return;
+
+      var div = document.createElement('div');
+      div.className = 'line';
+      var prompt = document.createElement('span');
+      prompt.className = 'prompt';
+      prompt.textContent = '> ';
+      div.appendChild(prompt);
+
+      var textSpan = document.createElement('span');
+      div.appendChild(textSpan);
+
+      var cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      div.appendChild(cursor);
+
+      term.appendChild(div);
+      div.style.opacity = 1;
+
+      var text = lines[index];
+      var charIndex = 0;
+
+      var typer = setInterval(function () {
+        textSpan.textContent += text.charAt(charIndex);
+        charIndex++;
+        if (charIndex >= text.length) {
+          clearInterval(typer);
+          cursor.remove();
+          setTimeout(function () { ketikBaris(index + 1); }, 350);
+        }
+      }, 28);
+    }
+
+    setTimeout(function () { ketikBaris(0); }, 400);
+
+    // fake but fun visitor count
+    document.getElementById('visitor-n').textContent = Math.floor(Math.random() * 400) + 37;
+  </script>
+
+</body>
+</html>
