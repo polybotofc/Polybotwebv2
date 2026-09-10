@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polybot | Source Code</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+
+  body {
+    background: #000;
+    color: #f2f2f7;
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  a { color: #8aa3ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+  /* HEADER */
+  .site-header { border-bottom: 1px solid #1c1d22; }
+
+  .site-header .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+    padding: 20px 24px;
+  }
+
+  .logo {
+    display: flex; align-items: baseline; gap: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 20px; color: #f2f2f7;
+  }
+
+  .logo .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #ff453a; display: inline-block;
+  }
+
+  .back-link {
+    font-size: 14px;
+    color: #9a9aa2;
+  }
+
+  .back-link:hover { color: #f2f2f7; }
+
+  /* MAIN */
+  main { flex: 1; padding: 56px 0 64px; }
+
+  .intro { margin-bottom: 36px; }
+
+  .intro h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 30px;
+    margin: 0 0 12px;
+  }
+
+  .intro p {
+    color: #9a9aa2; font-size: 15px;
+    max-width: 56ch; margin: 0;
+  }
+
+  /* INFO CARD */
+  .info-card {
+    background: #111114;
+    border: 1px solid #1c1d22;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid #1c1d22;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+
+  .info-row .label {
+    color: #9a9aa2;
+    font-size: 13px;
+  }
+
+  .info-row .value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #f2f2f7;
+    text-align: right;
+  }
+
+  /* DOWNLOAD BLOCK */
+  .download-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: #111114;
+    border: 1px solid #1c1d22;
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 28px;
+  }
+
+  .download-block h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    margin: 0 0 4px;
+    font-weight: 500;
+  }
+
+  .download-block p {
+    margin: 0;
+    color: #9a9aa2;
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 11px 22px;
+    border-radius: 8px;
+    background: #f2f2f7;
+    color: #0a0a0c;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background: #d9d9e0;
+    text-decoration: none;
+  }
+
+  /* NOTICE */
+  .notice {
+    border-top: 1px solid #1c1d22;
+    padding-top: 20px;
+    color: #9a9aa2;
+    font-size: 13px;
+  }
+
+  /* FOOTER */
+  .site-footer { border-top: 1px solid #1c1d22; }
+
+  .site-footer .wrap {
+    padding: 18px 24px; text-align: center;
+    font-size: 13px; color: #9a9aa2;
+  }
+
+  @media (max-width: 600px) {
+    .intro h1 { font-size: 24px; }
+    .download-block { flex-direction: column; align-items: flex-start; }
+    .btn-primary { width: 100%; justify-content: center; }
+    .info-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+    .info-row .value { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <span class="logo"><span class="dot"></span>Polybot</span>
+      <a href="index.html" class="back-link">← Kembali</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="intro">
+        <h1>Source code terakhir sebelum tutup.</h1>
+        <p>Ini versi terakhir Polybot yang sempat jalan. Silakan diunduh kalau mau dipelajari, dijalankan sendiri, atau dikembangkan lagi.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-row">
+          <span class="label">Versi</span>
+          <span class="value">v1 (final)</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Status</span>
+          <span class="value">tidak lagi dikembangkan</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Lisensi</span>
+          <span class="value">bebas dipakai, tanpa jaminan</span>
+        </div>
+      </div>
+
+      <div class="download-block">
+        <div>
+          <h3>scv1.zip</h3>
+          <p>Berisi seluruh source code bot versi terakhir.</p>
+        </div>
+        <a href="https://www.mediafire.com/file/hts77wlqd5u3kzw/scv1.zip/file" class="btn-primary">Download</a>
+      </div>
+
+      <p class="notice">
+        Nggak ada dukungan teknis lagi buat script ini — kalau nemu bug atau perlu update, kamu jalanin dan modif sendiri ya.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© 2024–2026 Polybot. Layanan tidak lagi berjalan.</div>
+  </footer>
+
+</body>
+</html>
