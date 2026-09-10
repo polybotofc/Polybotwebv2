@@ -1,173 +1,329 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<div id="container">
-  <header id="header">...</header>
-  <nav id="nav">...</nav>
-  <section id="content">...</section>
-  <footer id="footer">...</footer>
-</div>
-
-<script src="Css.css"></script>
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>PolyBot | Dashboard</title>
-    <style>
-        body {
-            background-color: black;
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            color: white;
-            text-align: center;
-        }
-        p {
-            color: white;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-</body>
-
-<html>
-<head>
-<style>
-body {
-  /* Gunakan gambar bergerak yang Anda inginkan sebagai latar belakang */
-  background-image: url("malam.jpg");
-  /* Atur ukuran gambar agar sesuai dengan layar */
-  background-size: cover;
-  /* Atur posisi gambar agar tetap di tengah */
-  background-position: center;
-  /* Atur pengulangan gambar agar tidak ada celah */
-  background-repeat: no-repeat;
-}
-</style>
-</head>
-<body>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polybotofficial</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polybot</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+  :root {
+    --bg: #10141c;
+    --surface: #161c26;
+    --border: #262f3d;
+    --text: #e8edf5;
+    --text-muted: #8b97ab;
+    --accent: #8aa3ff;
+    --accent-2: #5eead4;
+    --radius: 10px;
+  }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  * { box-sizing: border-box; }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #333333;
-      text-decoration: none;
-    }
+  html { scroll-behavior: smooth; }
 
-    .nav {
-      display: flex;
-      gap: 10px;
-    }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.55;
+  }
 
-    .nav a {
-      display: inline-block;
-      padding: 10px 15px;
-      color: #333333;
-      text-decoration: none;
-      border: 1px solid #333333;
-      border-radius: 5px;
-    }
+  a { color: inherit; }
 
-    .nav a:hover {
-      background-color: #333333;
-      color: #ffffff;
-    }
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
 
-    .main {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 400px;
-    }
+  /* HEADER */
+  .site-header {
+    border-bottom: 1px solid var(--border);
+  }
 
-    .main h1 {
-      font-size: 36px;
-      color: #333333;
-      margin: 0;
-    }
+  .site-header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 
-    .main p {
-      font-size: 18px;
-      color: #666666;
-      margin: 10px 0;
-    }
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--text);
+  }
 
-    .main a {
-      display: inline-block;
-      padding: 10px 20px;
-      color: #ffffff;
-      text-decoration: none;
-      background-color: #333333;
-      border-radius: 5px;
-    }
+  .logo .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    display: inline-block;
+  }
 
-    .main a:hover {
-      background-color: #666666;
-    }
+  .nav {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
 
-    .footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #333333;
-      color: #ffffff;
-      padding: 10px;
+  .nav a {
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .nav a:hover {
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 72px 0 88px;
+  }
+
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.15;
+    margin: 0 0 20px;
+    max-width: 16ch;
+  }
+
+  .hero p {
+    color: var(--text-muted);
+    font-size: 17px;
+    max-width: 46ch;
+    margin: 0 0 32px;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 22px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0c1018;
+  }
+
+  .btn-primary:hover {
+    background: #a4b8ff;
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+  }
+
+  /* CHAT MOCKUP */
+  .chat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .chat-card .status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-2);
+    margin-bottom: 16px;
+  }
+
+  .chat-card .status .pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    box-shadow: 0 0 0 0 rgba(94, 234, 212, 0.6);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(94, 234, 212, 0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(94, 234, 212, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(94, 234, 212, 0); }
+  }
+
+  .bubble {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .bubble.in {
+    background: #1f2733;
+    border-bottom-left-radius: 4px;
+  }
+
+  .bubble.out {
+    background: var(--accent);
+    color: #0c1018;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+  }
+
+  /* NOTE */
+  .note {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+  }
+
+  .note .wrap {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .note p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    max-width: 60ch;
+  }
+
+  /* FOOTER */
+  .site-footer {
+    border-top: 1px solid var(--border);
+  }
+
+  .site-footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px 24px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .site-footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    color: var(--text);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 760px) {
+    .hero { padding: 48px 0 56px; }
+    .hero .wrap {
+      grid-template-columns: 1fr;
+      gap: 36px;
     }
-  </style>
+    .hero h1 { font-size: 32px; max-width: none; }
+    .hero p { max-width: none; }
+    .site-header .wrap { justify-content: center; text-align: center; }
+    .nav { justify-content: center; }
+  }
+
+  @media (max-width: 420px) {
+    .wrap { padding: 0 16px; }
+    .nav a { padding: 8px 10px; font-size: 13px; }
+    .btn { width: 100%; justify-content: center; }
+    .cta-row { flex-direction: column; }
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <a href="#" class="logo">Polybotofficial</a>
-      <div class="nav">
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="#" class="logo"><span class="dot"></span>Polybot</a>
+      <nav class="nav">
         <a href="#">Beranda</a>
         <a href="T.html">Tentang</a>
         <a href="https://wa.me/6287745835962">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Bot WhatsApp yang jalan sendiri, 24 jam nonstop.</h1>
+        <p>
+          Polybot ngurus chat, download, sampai perintah otomatis di WhatsApp kamu tanpa perlu buka laptop terus-menerus. Dibangun sendiri, dibantu AI biar cepat jadi.
+        </p>
+        <div class="cta-row">
+          <a href="Web.html" class="btn btn-primary">Buka dashboard</a>
+          <a href="https://wa.me/6287745835962" class="btn btn-ghost">Chat admin</a>
+        </div>
+      </div>
+
+      <div class="chat-card">
+        <div class="status"><span class="pulse"></span>bot online</div>
+        <div class="bubble in">Halo! Ketik .menu buat lihat semua perintah ya.</div>
+        <div class="bubble out">.play ojo dibandingke</div>
+        <div class="bubble in">Lagi diunduh, tunggu bentar...</div>
       </div>
     </div>
-    <div class="main">
-      <h1>Selamat datang</h1>
+  </section>
+
+  <div class="note">
+    <div class="wrap">
       <p>
-        Web Ini Dihasilkan Dari Ai Dan Mungkin Tanpa Bantuan Ai Saya Tidak Akan Bisa Membuat Website Ini!
+        Web ini dibuat sendiri dengan bantuan AI — dari layout sampai penulisan kode. Tanpa itu, mungkin websitenya nggak akan pernah selesai.
       </p>
-      <a href="Web.html">Open Link</a>
-    </div>
-    <div class="footer">
-      <p>© 2024 Website. All rights reserved.</p>
     </div>
   </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2024 Polybot. Semua hak dilindungi.</span>
+      <a href="https://wa.me/6287745835962">Hubungi via WhatsApp</a>
+    </div>
+  </footer>
+
 </body>
 </html>
