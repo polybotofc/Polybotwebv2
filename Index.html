@@ -7,150 +7,163 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
 
-  :root {
-    --bg: #10141c;
-    --surface: #161c26;
-    --border: #262f3d;
-    --text: #e8edf5;
-    --text-muted: #8b97ab;
-    --accent: #8aa3ff;
-    --warn: #ff8a8a;
-    --radius: 10px;
-  }
-
   * { box-sizing: border-box; }
-
-  html, body {
-    height: 100%;
-    margin: 0;
-  }
+  html, body { height: 100%; margin: 0; }
 
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: #000;
+    color: #f2f2f7;
     font-family: 'Inter', Arial, sans-serif;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 
-  a { color: var(--accent); text-decoration: none; }
+  a { color: #8aa3ff; text-decoration: none; }
   a:hover { text-decoration: underline; }
 
-  .wrap {
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 0 24px;
-    width: 100%;
-  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
   /* HEADER */
-  .site-header { border-bottom: 1px solid var(--border); }
+  .site-header { border-bottom: 1px solid #1c1d22; }
 
   .site-header .wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     padding: 20px 24px;
   }
 
   .logo {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
+    display: flex; align-items: baseline; gap: 8px;
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--text);
+    font-weight: 700; font-size: 20px; color: #f2f2f7;
   }
 
   .logo .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--warn);
-    display: inline-block;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #ff453a; display: inline-block;
   }
 
   /* MAIN */
   main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex: 1; display: flex; align-items: center; justify-content: center;
     padding: 48px 0;
   }
 
-  .card {
-    max-width: 560px;
-    width: 100%;
-    text-align: center;
-    padding: 0 24px;
-  }
+  .card { max-width: 560px; width: 100%; text-align: center; padding: 0 24px; }
 
   .status {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #111114;
+    border: 1px solid #1c1d22;
     border-radius: 999px;
     padding: 7px 16px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-    color: var(--warn);
+    color: #ff453a;
     margin-bottom: 28px;
   }
 
   .status .pulse {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--warn);
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #ff453a;
   }
 
   h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 1.25;
+    font-weight: 700; font-size: 32px; line-height: 1.25;
     margin: 0 0 16px;
   }
 
-  .lead {
-    color: var(--text-muted);
-    font-size: 16px;
-    margin: 0 0 8px;
-  }
+  .lead { color: #9a9aa2; font-size: 16px; margin: 0 0 8px; }
 
   .note {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin: 24px 0 0;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+    color: #9a9aa2; font-size: 14px;
+    margin: 24px 0 0; padding-top: 20px;
+    border-top: 1px solid #1c1d22;
   }
 
   .closed-since {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--text-muted);
+    font-size: 12px; color: #9a9aa2;
     margin-top: 20px;
   }
 
   /* FOOTER */
-  .site-footer { border-top: 1px solid var(--border); }
+  .site-footer { border-top: 1px solid #1c1d22; }
 
   .site-footer .wrap {
-    padding: 18px 24px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-muted);
+    padding: 18px 24px; text-align: center;
+    font-size: 13px; color: #9a9aa2;
   }
 
   @media (max-width: 480px) {
     h1 { font-size: 26px; }
     .lead { font-size: 15px; }
+  }
+
+  /* NOTIFICATION PILL */
+  .pill {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    width: 56px;
+    background: #17181c;
+    border: 1px solid #2a2c33;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: translate(-50%, -160%);
+    z-index: 999;
+    animation: drop-hold-retract 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .pill .icon {
+    flex: 0 0 44px;
+    height: 44px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .pill .icon::before {
+    content: "!";
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 69, 58, 0.15);
+    color: #ff453a;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .pill .msg {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #f2f2f7;
+    font-size: 13px;
+    padding-right: 18px;
+    opacity: 0;
+    animation: fade-text 5s ease forwards;
+  }
+
+  @keyframes drop-hold-retract {
+    0%   { width: 56px;  border-radius: 50%; transform: translate(-50%, -160%); }
+    12%  { width: 300px; border-radius: 22px; transform: translate(-50%, 0%); }
+    72%  { width: 300px; border-radius: 22px; transform: translate(-50%, 0%); }
+    88%  { width: 56px;  border-radius: 50%; transform: translate(-50%, -160%); }
+    100% { width: 56px;  border-radius: 50%; transform: translate(-50%, -160%); }
+  }
+
+  @keyframes fade-text {
+    0%   { opacity: 0; }
+    16%  { opacity: 1; }
+    70%  { opacity: 1; }
+    80%  { opacity: 0; }
+    100% { opacity: 0; }
   }
 </style>
 </head>
@@ -171,7 +184,7 @@
 
       <div class="note">
         <p style="margin:0 0 8px;">Masih mau ngobrol atau nanya sesuatu? Chat langsung aja.</p>
-        <a href="https://wa.me/6287745835962">wa.me/6282297735399</a>
+        <a href="https://wa.me/6287745835962">wa.me/6287745835962</a>
       </div>
 
       <div class="closed-since">ditutup sejak 10 September 2026</div>
@@ -181,6 +194,53 @@
   <footer class="site-footer">
     <div class="wrap">© 2024–2026 Polybot. Layanan tidak lagi berjalan.</div>
   </footer>
+
+  <script>
+    var pesan = [
+      'Server lagi tidur, jangan dibangunin',
+      'Bot lagi baper, bentar ya',
+      'Koneksi ke masa depan gagal',
+      'Update terakhir: developer capek',
+      'Sinyal WhatsApp ilang di rimba kode',
+      'Situs ini resign duluan sebelum kamu',
+      'Semangat developer: not found',
+      '502 - lagi mikirin hidup'
+    ];
+
+    function tampilkanNotif() {
+      var lama = document.querySelector('.pill');
+      if (lama) lama.remove();
+
+      var pill = document.createElement('div');
+      pill.className = 'pill';
+
+      var icon = document.createElement('span');
+      icon.className = 'icon';
+
+      var msg = document.createElement('span');
+      msg.className = 'msg';
+      msg.textContent = pesan[Math.floor(Math.random() * pesan.length)];
+
+      pill.appendChild(icon);
+      pill.appendChild(msg);
+      document.body.appendChild(pill);
+
+      setTimeout(function () {
+        pill.remove();
+      }, 5000);
+    }
+
+    function jadwalkanNotif() {
+      var jeda = 4000 + Math.random() * 5000;
+      setTimeout(function () {
+        tampilkanNotif();
+        jadwalkanNotif();
+      }, jeda);
+    }
+
+    setTimeout(tampilkanNotif, 1500);
+    jadwalkanNotif();
+  </script>
 
 </body>
 </html>
