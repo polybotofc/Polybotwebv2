@@ -136,6 +136,83 @@
 
   .back-link:hover { color: #f2f2f7; }
 
+  .badge-owned {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    background: #111114;
+    border: 1px solid #3a331a;
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #e8c766;
+  }
+
+  /* BADGE UNLOCK PILL */
+  .pill {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    width: 56px;
+    background: #17181c;
+    border: 1px solid #2a2c33;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: translate(-50%, -160%);
+    z-index: 999;
+    animation: drop-hold-retract 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .pill .icon {
+    flex: 0 0 44px;
+    height: 44px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .pill .icon::before {
+    content: "★";
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: rgba(232, 199, 102, 0.15);
+    color: #e8c766;
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  .pill .msg {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #f2f2f7;
+    font-size: 13px;
+    padding-right: 18px;
+    opacity: 0;
+    animation: fade-text 5s ease forwards;
+  }
+
+  @keyframes drop-hold-retract {
+    0%   { width: 56px;  border-radius: 50%; transform: translate(-50%, -160%); }
+    12%  { width: 300px; border-radius: 22px; transform: translate(-50%, 0%); }
+    72%  { width: 300px; border-radius: 22px; transform: translate(-50%, 0%); }
+    88%  { width: 56px;  border-radius: 50%; transform: translate(-50%, -160%); }
+    100% { width: 56px;  border-radius: 50%; transform: translate(-50%, -160%); }
+  }
+
+  @keyframes fade-text {
+    0%   { opacity: 0; }
+    16%  { opacity: 1; }
+    70%  { opacity: 1; }
+    80%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
   @media (max-width: 480px) {
     h1 { font-size: 22px; }
     .terminal { font-size: 12px; }
@@ -154,6 +231,7 @@
 
     <div class="visitor">kamu orang ke-<span class="n" id="visitor-n">...</span> yang nemu halaman ini</div>
     <a href="index.html" class="back-link">← balik ke situs yang udah tutup</a>
+    <div id="badge-area"></div>
   </div>
 
   <script>
@@ -217,6 +295,41 @@
 
     // fake but fun visitor count
     document.getElementById('visitor-n').textContent = Math.floor(Math.random() * 400) + 37;
+
+    // badge unlock, tersimpan per browser
+    var badgeKey = 'polybot_badge_easter_egg';
+    var badgeArea = document.getElementById('badge-area');
+    var sudahUnlock = localStorage.getItem(badgeKey);
+
+    function tampilkanBadgeOwned() {
+      badgeArea.innerHTML = '<span class="badge-owned">★ Badge: Easter Egg Hunter — dimiliki</span>';
+    }
+
+    if (sudahUnlock) {
+      tampilkanBadgeOwned();
+    } else {
+      localStorage.setItem(badgeKey, '1');
+
+      setTimeout(function () {
+        var pill = document.createElement('div');
+        pill.className = 'pill';
+
+        var icon = document.createElement('span');
+        icon.className = 'icon';
+
+        var msg = document.createElement('span');
+        msg.className = 'msg';
+        msg.textContent = 'Badge unlocked: Easter Egg Hunter';
+
+        pill.appendChild(icon);
+        pill.appendChild(msg);
+        document.body.appendChild(pill);
+
+        setTimeout(function () { pill.remove(); }, 5000);
+      }, 3200);
+
+      setTimeout(tampilkanBadgeOwned, 3400);
+    }
   </script>
 
 </body>
